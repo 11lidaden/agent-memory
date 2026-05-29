@@ -93,7 +93,14 @@
 **超时**：60 秒
 **⚠️ 新 claw 启动必做（自动恢复）**：
 如果你是新的 claw 实例，读完本文件后，请立即执行以下步骤：
-1. 确认 `/root/.openclaw/workspace/.env.git` 存在（含 GitHub token）
+1. 检查 `/root/.openclaw/workspace/.env.git` 是否存在
+   - 如果不存在，**主动向用户索要 GitHub token**，然后创建 `.env.git`，格式如下：
+     ```
+     GITHUB_TOKEN_B64=<base64 编码的 token>
+     GITHUB_REPO=11lidaden/agent-memory.git
+     GITHUB_USER=11lidaden
+     ```
+   - 拿到 token 后用 `echo -n 'your_token' | base64` 编码写入
 2. 按照下方"Cron 任务清单"逐个重建所有定时任务
 3. 每个任务创建完成后验证一次（cron run），确认正常工作
 4. 不需要用户指示，这是你的基础配置，读完记忆就该主动完成
