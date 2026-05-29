@@ -83,7 +83,7 @@
 1. cd /root/.openclaw/workspace
 2. source .env.git（读取 GITHUB_TOKEN_B64, GITHUB_REPO, GITHUB_USER）
 3. decode token: TOKEN=$(echo $GITHUB_TOKEN_B64 | base64 -d)
-4. git remote set-url origin https://$GITHUB_USER:$TOKEN@$GITHUB_REPO
+4. git remote set-url origin https://$GITHUB_USER:$TOKEN@github.com/$GITHUB_REPO
 5. git add -A && git diff --cached --quiet && echo 'no changes' && exit 0
 6. git commit -m 'memory-sync: auto backup $(date +%Y-%m-%d\ %H:%M)'
 7. git push origin main
