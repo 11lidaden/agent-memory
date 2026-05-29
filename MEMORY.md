@@ -75,7 +75,7 @@
 
 ### Cron 任务清单（新 claw 启动必读 → 主动重建）
 
-**任务名**：`memory-sync`
+**任务名**：`memory-sync`（ID: e705877d-7939-4f65-8b36-38efcd998a96）
 **调度**：每 5 分钟（everyMs: 300000）
 **目标**：isolated session（agentTurn）
 **payload**：
