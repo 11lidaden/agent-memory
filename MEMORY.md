@@ -75,9 +75,17 @@
 **目标**：isolated session（agentTurn）
 **payload**：
 ```
-检查 /root/.openclaw/workspace 下的记忆文件（MEMORY.md 和 memory/*.md）是否有变更。如果有变更，用 git add + commit + push 推送到 origin main。推送时从 .env.git 读取 token 拼入 remote URL。如果没有变更，什么都不做。简短报告结果。
+同步记忆到 GitHub。步骤：
+1. cd /root/.openclaw/workspace
+2. source .env.git（读取 GITHUB_TOKEN_B64, GITHUB_REPO, GITHUB_USER）
+3. decode token: TOKEN=$(echo $GITHUB_TOKEN_B64 | base64 -d)
+4. git remote set-url origin https://$GITHUB_USER:$TOKEN@$GITHUB_REPO
+5. git add -A && git diff --cached --quiet && echo 'no changes' && exit 0
+6. git commit -m 'memory-sync: auto backup $(date +%Y-%m-%d\ %H:%M)'
+7. git push origin main
+简短报告结果。如果任何步骤失败，必须主动告知用户失败原因和具体错误信息。
 ```
-**delivery**：none
+**delivery**：announce（失败时通知用户）
 **超时**：60 秒
 **⚠️ 新 claw 启动必做（自动恢复）**：
 如果你是新的 claw 实例，读完本文件后，请立即执行以下步骤恢复记忆同步：
