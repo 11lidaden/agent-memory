@@ -58,6 +58,16 @@
 
 ---
 
+## 记忆同步机制
+
+- **GitHub 仓库**：https://github.com/11lidaden/agent-memory.git
+- **自动同步**：cron 任务 `memory-sync`，每 5 分钟检查并推送变更
+- **凭证存储**：`.env.git`（已 gitignore）
+- **恢复方式**：新 claw 实例拉取仓库即可恢复全部记忆
+- **建立日期**：2026-05-29
+
+---
+
 ## 待办事项
 
 - [ ] 确认用户称呼和偏好
